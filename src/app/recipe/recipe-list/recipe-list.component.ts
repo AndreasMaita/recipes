@@ -14,7 +14,7 @@ export class RecipeListComponent implements OnInit {
     new Recipe('Spaghetti Aglio e Olio', 'prendere Spaghetti e buttali nel aqua')];
 
 
-  constructor() { }s
+  constructor() { }
 
   @Output() theRecipe = new EventEmitter<Recipe>();
   ngOnInit() {
