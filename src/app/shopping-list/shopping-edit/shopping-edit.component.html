@@ -1,28 +1,8 @@
-<div class="row">
-    <div class="col-xs-12">
-        <form>
+<h1>Shopping List</h1>
 
-            <div class="row">
-                <div class="col-sm-5 form-group">
-                    <label for="name">name</label>
-                    <input type="text" id="number" class="form-control">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-2 form-group">
-                    <label for="amount">amount</label>
-                    <input type="number" id="amount" class="form-control">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <button class="btn btn-success">Add</button>
-                    <button class="btn btn-danger">Delete</button>
-                    <button class="btn btn-primary">Clear</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="container">
+  <mat-form-field>
+    <input matInput placeholder="ingredient name" [(ngModel)]="enteredItemName">
+  </mat-form-field>
+<button mat-button class="button" (click)="onAddItem()">Add</button>
 </div>
