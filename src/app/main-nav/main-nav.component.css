@@ -3,10 +3,16 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 15%px;
+  background-color:rgb(50, 76, 80);
 }
 
-.sidenav .mat-toolbar {
+.toolbar {
+  background: inherit;
+  background-color: orangered;
+}
+
+.sidenav-toolbar {
   background: inherit;
 }
 
@@ -14,4 +20,8 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.ng-content {
+  margin-left: 5px;
 }
