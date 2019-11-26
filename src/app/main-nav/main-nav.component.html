@@ -3,10 +3,18 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
+
+    <mat-toolbar class="sidenav-toolbar navitem">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item class="navitem" href="#" (click)="onSelect('shopping-list')">Shopping List</a>
+      <a mat-list-item class="navitem" href="#" (click)="onSelect('recipes')">recipes</a>
+      <a mat-list-item class="navitem" href="#" (click)="onSelect('login')">Login</a>
+
     <mat-toolbar class="sidenav-toolbar">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#" (click)="onSelect('shopping-list')">Shopping List</a>
       <a mat-list-item href="#" (click)="onSelect('recipes')">recipes</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
