@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ListsService } from '../list.service';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit {
+export class ShoppingEditComponent {
+  enteredItemName: string;
 
-  constructor() { }
+  constructor(public listService: ListsService) {}
 
-  ngOnInit() {
+  onAddItem() {
+    this.listService.addList(this.enteredItemName);
   }
 
 }
