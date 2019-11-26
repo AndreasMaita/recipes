@@ -9,4 +9,4 @@ Für das Backend wird Express.js und Node.js genutzt zusammen mit der NoSQL Date
 
 # Deployment
 Right now, im using Heroku to deploy this WebApp. You can find the deployed version under this URL:
-http://my-recipes-andreas-maita.herokuapp.com/
+http://angular-recipe.herokuapp.com/#
