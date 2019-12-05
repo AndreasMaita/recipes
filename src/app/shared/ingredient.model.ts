@@ -1,5 +1,5 @@
-export class Ingredient {
- 
-    constructor(public name: string, public amount: number) {
-    }
+export interface Ingredient {
+  id: string;
+  name: string;
+  amount: number;
 }

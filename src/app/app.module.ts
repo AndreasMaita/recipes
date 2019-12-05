@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
 
   ],
   providers: [],

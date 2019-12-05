@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Ingredient } from '../shared/ingredient.model';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({providedIn: 'root'})
 export class ListsService {
- private ingredients: string[] = [];
- private listUpdated = new Subject<string[]>();
+ private ingredients: Ingredient[] = [];
+ private listUpdated = new Subject<Ingredient[]>();
 
+  constructor(private http: HttpClient) {}
 
  getList() {
-   return [...this.ingredients];
+   this.http.get<{message: string, ingredients: Ingredient[]}>('http://localhost:8080/api/shoppingitems')
+   .subscribe( (postData) => {
+      this.ingredients = postData.ingredients;
+      this.listUpdated.next([...this.ingredients]);
+   });
  }
 
  getListUpdateListener() {
@@ -16,8 +24,8 @@ export class ListsService {
  }
 
  addList(title: string) {
-   const formTitle: string = title;
-   this.ingredients.push(formTitle);
+   const ingredient: Ingredient = {id: null, name: title, amount: null };
+   this.ingredients.push(ingredient);
    this.listUpdated.next([...this.ingredients]);
   }
 
