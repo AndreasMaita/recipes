@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 import { HttpClient } from '@angular/common/http';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class ListsService {
@@ -12,9 +12,18 @@ export class ListsService {
   constructor(private http: HttpClient) {}
 
  getList() {
-   this.http.get<{message: string, ingredients: Ingredient[]}>('http://localhost:8080/api/shoppingitems')
-   .subscribe( (postData) => {
-      this.ingredients = postData.ingredients;
+   this.http.get<{message: string, ingredients: any}>('http://localhost:8080/api/shoppingitems')
+   .pipe(map((ingredientData) => {
+      return ingredientData.ingredients.map(ingredient => {
+          return {
+            id: ingredient._id,
+            name: ingredient.name,
+            amount: ingredient.amount
+          };
+      });
+   }))
+   .subscribe( (ingredientData) => {
+      this.ingredients = ingredientData;
       this.listUpdated.next([...this.ingredients]);
    });
  }
@@ -23,10 +32,14 @@ export class ListsService {
    return this.listUpdated.asObservable();
  }
 
- addList(title: string) {
-   const ingredient: Ingredient = {id: null, name: title, amount: null };
-   this.ingredients.push(ingredient);
-   this.listUpdated.next([...this.ingredients]);
+ addList(nameForm: string, amountForm: number) {
+   const ingredient: Ingredient = {id: null, name: nameForm, amount: amountForm };
+   this.http.post<{message: string}>('http://localhost:8080/api/shoppingitems', ingredient)
+    .subscribe( (responseData) => {
+      console.log(responseData.message);
+      this.ingredients.push(ingredient);
+      this.listUpdated.next([...this.ingredients]);
+    });
   }
 
 }

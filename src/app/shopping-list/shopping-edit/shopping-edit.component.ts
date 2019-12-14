@@ -8,11 +8,12 @@ import { ListsService } from '../list.service';
 })
 export class ShoppingEditComponent {
   enteredItemName: string;
+  enteredAmount: number;
 
   constructor(public listService: ListsService) {}
 
   onAddItem() {
-    this.listService.addList(this.enteredItemName);
+    this.listService.addList(this.enteredItemName, this.enteredAmount);
   }
 
 }

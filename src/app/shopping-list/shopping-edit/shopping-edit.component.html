@@ -4,5 +4,8 @@
   <mat-form-field>
     <input matInput placeholder="ingredient name" [(ngModel)]="enteredItemName">
   </mat-form-field>
-<button mat-button class="button" (click)="onAddItem()">Add</button>
+  <mat-form-field>
+    <input matInput placeholder="amount" [(ngModel)]="enteredAmount">
+  </mat-form-field>
+<button mat-button class="button" (click)="onAddItem()">Add Ingredient to Shopping List</button>
 </div>
