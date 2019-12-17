@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
+import { ShowListComponent } from './shopping-list/show-list/show-list.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeItemComponent,
     RecipeDetailComponent,
     MainNavComponent,
+    ShowListComponent,
 
 
   ],
@@ -45,7 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatIconModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
 
   ],
   providers: [],

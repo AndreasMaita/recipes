@@ -42,4 +42,8 @@ export class ListsService {
     });
   }
 
+  deleteItem() {
+
+  }
+
 }
