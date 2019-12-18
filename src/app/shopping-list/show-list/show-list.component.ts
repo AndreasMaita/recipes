@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Subscription } from 'rxjs';
 import { ListsService } from '../list.service';
@@ -22,8 +22,8 @@ export class ShowListComponent implements OnInit, OnDestroy {
     });
   }
 
-  deleteItem() {
-    this.listService.deleteItem();
+  onDelete(IngreID: string) {
+    this.listService.deleteItem(IngreID);
   }
 
   ngOnDestroy() {
