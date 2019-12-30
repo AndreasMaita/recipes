@@ -1,9 +1,31 @@
 <div class="container">
+<form (submit)="onAddItem(Form)" #Form="ngForm">
   <mat-form-field>
-    <input matInput placeholder="ingredient name" [(ngModel)]="enteredItemName">
+    <input
+    matInput
+    type="text"
+    name="enteredItemName"
+    ngModel
+    required
+    minlength="2"
+    placeholder="ingredient name"
+    #enteredItemName="ngModel">
+    <mat-error *ngIf="enteredItemName.invalid">Please enter an Ingredient</mat-error>
   </mat-form-field>
+  <br>
   <mat-form-field>
-    <input matInput placeholder="amount" [(ngModel)]="enteredAmount">
+    <input
+    matInput
+    type="number"
+    name="enteredAmount"
+    ngModel
+    required
+    placeholder="amount"
+    #enteredAmount="ngModel">
+    <mat-error *ngIf="enteredAmount.invalid">Please enter a number</mat-error>
   </mat-form-field>
-<button mat-button class="button" (click)="onAddItem()">Add Ingredient to Shopping List</button>
+  </form>
+<button mat-button class="button" (click)="onAddItem(Form)">Add Ingredient to Shopping List</button>
 </div>
+
+
