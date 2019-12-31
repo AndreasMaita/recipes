@@ -1,28 +1,35 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Recipe } from '../recipe.model';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ListsService } from 'src/app/shopping-list/list.service';
+import { Subscription } from 'rxjs';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeListComponent implements OnInit, OnDestroy {
+  ingredients: Ingredient[] = [];
+  private listSub: Subscription;
 
-  recipes: Recipe[] = [
-    new Recipe('Spiegelei', 'Pfanne erhitzen -> Öl/Butter einwerfen -> Ei einlegen'),
-    new Recipe('Spaghetti Aglio e Olio', 'prendere Spaghetti e buttali nel aqua')];
+  constructor(public listService: ListsService) { }
 
-
-  constructor() { }
-
-  @Output() theRecipe = new EventEmitter<Recipe>();
   ngOnInit() {
-    // fetch Recipes from the Database
+    this.listService.getList();
+    this.listSub = this.listService.getListUpdateListener()
+    .subscribe((list: Ingredient[]) => {
+      this.ingredients = list;
+    });
   }
 
-  onrecipeSelected(recipe: Recipe) {
-    this.theRecipe.emit(recipe);
+  ngOnDestroy() {
+    this.listSub.unsubscribe();
   }
+
+  onDelete() {
+
+  }
+
+
 
 }

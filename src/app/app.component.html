@@ -1,7 +1,6 @@
 
-<app-main-nav (optionSelected)="onNavigation($event)">
-  <app-recipe *ngIf="optionLoaded === 'recipes'"></app-recipe>
-  <app-shopping-list *ngIf="optionLoaded !== 'recipes'"></app-shopping-list>
+<app-main-nav>
+  <app-shopping-list></app-shopping-list>
 </app-main-nav>
 
 

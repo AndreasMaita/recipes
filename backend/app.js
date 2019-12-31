@@ -31,12 +31,13 @@ app.post("/api/shoppingitems", (req, res, next) =>{
     name: req.body.name,
     amount: req.body.amount
   });
-  ingredients.save().then( result => {
+  ingredients.save().then( createdIngredient => {
     res.status(201).json({
     message: 'ingredient added',
-    IngreID: result._id
+    IngreID: createdIngredient._id
     });
   });
+  console.log("Ingredient " + ingredients.name +" with amount of " + ingredients.amount + " and id of " + ingredients.id + " is added!");
 });
 
 app.get("/api/shoppingitems", (req, res, next) => {
@@ -51,7 +52,8 @@ app.get("/api/shoppingitems", (req, res, next) => {
 app.delete("/api/shoppingitems/:id", (req, res, next) => {
 
   Ingredient.deleteOne({ _id: req.params.id}).then( result => {
-    console.log(result);
+    console.log(result.name);
+
     res.status(200).json({message: "Ingredient Deleted!"});
   });
 });

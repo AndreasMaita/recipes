@@ -34,9 +34,9 @@ export class ListsService {
 
  addList(nameForm: string, amountForm: number) {
    const ingredient: Ingredient = {id: null, name: nameForm, amount: amountForm };
-   this.http.post<{message: string, id: string}>('http://localhost:8080/api/shoppingitems', ingredient)
-    .subscribe( (responseData) => {
-      const id = responseData.id;
+   this.http.post<{message: string, IngreID: string}>('http://localhost:8080/api/shoppingitems', ingredient)
+    .subscribe(responseData => {
+      const id = responseData.IngreID;
       ingredient.id = id;
       this.ingredients.push(ingredient);
       this.listUpdated.next([...this.ingredients]);

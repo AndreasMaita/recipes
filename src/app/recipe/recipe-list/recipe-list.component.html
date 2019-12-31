@@ -1,8 +1,4 @@
-
-
-<div class="row">
-  <h2>Your recipes</h2>
-    <div>
-        <app-recipe-item *ngFor='let recipe of recipes' [recipe]='recipe' (recipeSelected)="onrecipeSelected(recipe)"></app-recipe-item>
-    </div>
+<div>
+  <app-show-list></app-show-list>
 </div>
+

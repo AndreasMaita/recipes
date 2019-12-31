@@ -19,7 +19,7 @@ export class ShoppingEditComponent {
     }
     this.listService.addList(form.value.enteredItemName, form.value.enteredAmount);
 
-    form.reset();
+    form.resetForm();
   }
 
 }
