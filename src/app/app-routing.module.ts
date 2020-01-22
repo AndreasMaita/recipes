@@ -5,10 +5,12 @@ import { ShowListComponent } from './shopping-list/show-list/show-list.component
 
 const routes: Routes = [
   { path: '', component: ShowListComponent },
-  { path: 'create', component: ShoppingEditComponent }
+  { path: 'create', component: ShoppingEditComponent },
+  { path: 'edit/:itemId', component: ShoppingEditComponent}
 ];
 
 @NgModule({
-
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

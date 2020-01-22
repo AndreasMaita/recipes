@@ -40,6 +40,17 @@ app.post("/api/shoppingitems", (req, res, next) =>{
   console.log("Ingredient " + ingredients.name +" with amount of " + ingredients.amount + " and id of " + ingredients.id + " is added!");
 });
 
+app.put("/api/ingredients/:id", (req, res, next) => {
+  const ingredient = new Ingredient({
+    name: req.body.name,
+    amount: req.body.amount
+  });
+  Ingredient.updateOne({ _id: req.params.id}, ingredient).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Updated scuesfull!"});
+  });
+});
+
 app.get("/api/shoppingitems", (req, res, next) => {
   Ingredient.find().then((documents) => {
     res.status(200).json({
@@ -57,13 +68,20 @@ app.delete("/api/shoppingitems/:id", (req, res, next) => {
     res.status(200).json({message: "Ingredient Deleted!"});
   });
 });
-// // Serve only the static files form the dist directoryyyy
-// app.use(express.static(__dirname + '/dist/recipe-app'));
 
-// app.get('/*', function(req,res) {
-
-// res.sendFile(path.join(__dirname+'/dist/recipe-app/index.html'));
-// });
+app.post("/api/recipes", (req, res, next) =>{
+  const recipes = new Recipes({
+    name: req.body.name,
+    amount: req.body.author
+  });
+  recipes.save().then( createdRecipes => {
+    res.status(201).json({
+    message: 'ingredient added',
+    IngreID: createdRecipes._id
+    });
+  });
+  console.log("Recipe " + recipes.name +" of Author " +recipes.author +" is added!");
+});
 
 
 module.exports = app;

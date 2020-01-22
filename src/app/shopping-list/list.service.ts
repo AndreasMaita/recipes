@@ -11,8 +11,18 @@ export class ListsService {
 
   constructor(private http: HttpClient) {}
 
- getList() {
-   this.http.get<{message: string, ingredients: any}>('http://localhost:8080/api/shoppingitems')
+  getItem(id: string) {
+    return {...this.ingredients.find( i => i.id === id)};
+  }
+
+
+  updateItem(id: string, name: string, amount: number) {
+    const item: Ingredient = { id, name, amount };
+    this.http.put('http://localhost:8080/api/shoppingitems/' + id, item).subscribe( response => console.log(response));
+  }
+
+  getList() {
+   this.http.get<{message: string, ingredients: any}>('http://localhost:8080/api/shoppingitems/')
    .pipe(map((ingredientData) => {
       return ingredientData.ingredients.map(ingredient => {
           return {
@@ -34,7 +44,7 @@ export class ListsService {
 
  addList(nameForm: string, amountForm: number) {
    const ingredient: Ingredient = {id: null, name: nameForm, amount: amountForm };
-   this.http.post<{message: string, IngreID: string}>('http://localhost:8080/api/shoppingitems', ingredient)
+   this.http.post<{message: string, IngreID: string}>('http://localhost:8080/api/shoppingitems/', ingredient)
     .subscribe(responseData => {
       const id = responseData.IngreID;
       ingredient.id = id;

@@ -1,0 +1,29 @@
+<div class="container">
+  <form (submit)="onSaveRecipe(Form)" #Form="ngForm">
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      placeholder="recipe name"
+      name="enteredRecipeName"
+      [ngModel]
+      required
+      minlength="2">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      placeholder="Ingredient item"
+      name="enteredRecipeAuthor"
+      [ngModel]
+      required
+      minlength="2">
+    </mat-form-field>
+  </form>
+  <button mat-button class="button" (click)="onSaveRecipe(Form)">Add Ingredient to Shopping List</button>
+</div>
+
+<br>
+<app-recipe-list><app-recipe-list>

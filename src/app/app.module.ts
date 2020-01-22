@@ -18,6 +18,8 @@ import { ShowListComponent } from './shopping-list/show-list/show-list.component
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     FormsModule,
@@ -45,7 +48,8 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
     MatIconModule,
     LayoutModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
 
   ],
   providers: [],

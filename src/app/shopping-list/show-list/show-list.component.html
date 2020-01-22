@@ -4,7 +4,7 @@
   <mat-expansion-panel *ngFor="let ingredient of ingredients">
     <mat-expansion-panel-header>{{ingredient.name }} {{ingredient.amount}}</mat-expansion-panel-header>
     <mat-action-row>
-    <button mat-button color="primary">EDIT</button>
+    <a mat-button color="primary" [routerLink]="['/edit', ingredient.id]">EDIT</a>
     <button mat-button color="warn" (click)=onDelete(ingredient.id)>DELETE</button>
   </mat-action-row>
   </mat-expansion-panel>

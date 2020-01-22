@@ -1,11 +1,11 @@
 <div class="container">
-<form (submit)="onAddItem(Form)" #Form="ngForm">
+<form (submit)="onSaveItem(Form)" #Form="ngForm">
   <mat-form-field>
     <input
     matInput
     type="text"
     name="enteredItemName"
-    ngModel
+    [ngModel] = "item?.name"
     required
     minlength="2"
     placeholder="ingredient name"
@@ -18,14 +18,16 @@
     matInput
     type="number"
     name="enteredAmount"
-    ngModel
+    [ngModel] = "item?.amount"
     required
     placeholder="amount"
     #enteredAmount="ngModel">
     <mat-error *ngIf="enteredAmount.invalid">Please enter a number</mat-error>
   </mat-form-field>
   </form>
-<button mat-button class="button" (click)="onAddItem(Form)">Add Ingredient to Shopping List</button>
+<button mat-button class="button" (click)="onSaveItem(Form)">Add Ingredient to Shopping List</button>
 </div>
+<br>
+<app-show-list></app-show-list>
 
 
